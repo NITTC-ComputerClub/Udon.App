@@ -1,13 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@charset "UTF-8";
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+	height: 100%;
+	margin: 0px;
+  	font: 16px "Montserrat", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+}
+/*-------Login Menu-------*/
+div.login_contents{
+	text-align: center;
+	justify-content: center;
+}
+h1::first-letter{
+	color: #A00000;
+}
+h1.loginMenu{
+	font-size: 50px;
+	margin-bottom: 0px;
+}
+img.icon{
+	width: 200px;
+	height:200px;
+}
+div.loginMenu{
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #B62021;/*文字色*/
+    border: solid 3px #B62021;/*線*/
+    background: linear-gradient(145deg, #FFFFFF, #CBCDD0);
+	border-radius: 15%;
+	box-shadow: 8.71px 8.71px 18px #77787A, -8.71px -8.71px 18px #FFFFFF;
+	margin: 0 auto;
+  	width: 200px;
+  	height: 100px;
+}
+div.loginMenu h1{
+	margin-top: 0.8em;
+}
+div.content{
+	display: flex;
+}
+/*-------Main Menu-------*/
+div.nav{
+	background-color: #e9d0a6;
+	text-align: center;
+	width: 20vw;
+	height: 100vh;
+}
+div.nav h1{
+	font-size: 3em;
+	color: #000;
+	margin-bottom: 0px;
+}
+div.nav p{
+	margin: 0;
+}
+div.nav ul{
+	margin: 0;
+	margin-top: 1em;
+	text-align: center;
+	padding: 0;
+	list-style: none;
+	height: 50vh;
+}
+div.nav ul li{
+	display: inline-block;
+	cursor: pointer;
+	font-size: 1.5em;
+	padding-top: 1em;
+	padding-bottom: 0.2em;
+}
+div.punch{
+	display: inline-block;
+	padding: 0.2em 0.5em;
+	margin: 0 auto;
+	border: solid 3px #000000;
+	background: linear-gradient(145deg, #e9d0a6, #C9A892);
+	border-radius: 10%;
+	box-shadow: 8.71px 8.71px 18px #C9A892, -8.71px -8.71px 18px #f4d5b1;
+}
+div.punch h1{
+	cursor: pointer;
+	margin: 0;
+	user-select: none;
+}
+/*Main_Menu---main*/
+div.main{
+	background-color: #222222;
+	width: 80vw;
+	height: 100vh;
+}
+div.punchlist{
+	display: flex;
+	justify-content: center;
 }
