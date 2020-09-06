@@ -27,7 +27,6 @@ div.loginMenu{
     font-weight: bold;
     color: #B62021;/*文字色*/
     border: solid 3px #B62021;/*線*/
-    background: linear-gradient(145deg, #FFFFFF, #CBCDD0);
 	border-radius: 15%;
 	box-shadow: 8.71px 8.71px 18px #77787A, -8.71px -8.71px 18px #FFFFFF;
 	margin: 0 auto;
@@ -75,7 +74,6 @@ div.punch{
 	padding: 0.2em 0.5em;
 	margin: 0 auto;
 	border: solid 3px #000000;
-	background: linear-gradient(145deg, #e9d0a6, #C9A892);
 	border-radius: 10%;
 	box-shadow: 8.71px 8.71px 18px #C9A892, -8.71px -8.71px 18px #f4d5b1;
 }

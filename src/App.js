@@ -11,23 +11,31 @@ import{
 
 //import Login from './pages/login/login.component'
 //import MainMenu from './pages/main-menu/main-menu.component'
+//<img className="icon" src={require("./Udon_icon.png")}/>
+
+const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirect_uri=localhost:3000/callback";
 
 const Login =()=>{
-  function FetchJson(){
-    fetch("https://udon.app/ca")
-  }
+
   return(
     <div className="login_contents">
       <h1 className="loginMenu"> Udon </h1>
       
-      <img className="icon" src={require("./Udon_icon.png")}/>
-      <a href="https://udon.nittc-programming.club/users/authenticate?redirect_uri=https://udon.app/callback">
+      <a href={AUTH_URL}>
         <div className="loginMenu" onClick="FetchJson">
           <h1>LOGIN</h1>
         </div>
       </a>
     </div>
     );
+}
+const Callback=()=>{
+
+  return(
+    <div>
+    <p>メインページにリダイレクトします。しばらくお待ちください。</p>
+    </div>
+    )
 }
 
 class MainMenu extends React.Component{
@@ -85,6 +93,8 @@ function App() {
         <Switch>
           <Route path="/login" exact component={Login}/>
           <Route path="/main" exact component={MainMenu}/>
+          //ここはあとで消す
+          <Route path="/Callback" exact component={Callback}/>
         </Switch>
       </Router>
     </div>
