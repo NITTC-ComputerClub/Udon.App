@@ -7,13 +7,15 @@ import{
   Route,
   Link,
   Redirect
-} from 'react-router-dom'
-
+} from 'react-router-dom';
+import queryString from 'query-string';
+import 'whatwg-fetch';
 //import Login from './pages/login/login.component'
 //import MainMenu from './pages/main-menu/main-menu.component'
 //<img className="icon" src={require("./Udon_icon.png")}/>
 
-const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirect_uri=localhost:3000/callback";
+const AUTH_URL = encodeURI("https://udon.nittc-programming.club/users/authenticate?redirect_uri=https://localhost:3000/callback");
+const TOKEN = "";
 
 const Login =()=>{
 
@@ -29,8 +31,22 @@ const Login =()=>{
     </div>
     );
 }
-const Callback=()=>{
 
+const Callback=(props)=>{
+  const code = queryString.parse(props.location.search); 
+  console.log(code.code);
+  fetch('https://udon.nittc-programming.club/users/token'),{
+    method: 'POST',
+    heaers:{},
+    body: JSON.stringfy({
+      code: code.code,
+      redirectUri: "https://localhost:3000/main" 
+    }).then(response=>{
+        TOKEN = response.token;
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
   return(
     <div>
     <p>メインページにリダイレクトします。しばらくお待ちください。</p>
@@ -94,7 +110,9 @@ function App() {
           <Route path="/login" exact component={Login}/>
           <Route path="/main" exact component={MainMenu}/>
           //ここはあとで消す
+          <Route render={(props)=>
           <Route path="/Callback" exact component={Callback}/>
+          }/>
         </Switch>
       </Router>
     </div>
