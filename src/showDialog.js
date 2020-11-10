@@ -1,6 +1,10 @@
 import React , {useState,useEffect} from 'react';
 import {Button , Dialog , DialogActions , DialogContent} from '@material-ui/core';
 
+const punch = () =>{
+	//doSomething
+}
+
 const showDialog = () => {
 	const reconfmsg="打刻します。よろしいですか？"
 	const [open,setOpen]= React.useState(false);

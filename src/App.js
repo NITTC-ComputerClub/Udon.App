@@ -8,6 +8,7 @@ import{
   Link,
   Redirect
 } from 'react-router-dom'
+import {Button} from '@material-ui/core'
 
 //import Login from './pages/login/login.component'
 //import MainMenu from './pages/main-menu/main-menu.component'
@@ -18,14 +19,10 @@ const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirec
 const Login =()=>{
 
   return(
-    <div className="login_contents">
-      <h1 className="loginMenu"> Udon </h1>
+    <div>
+      <p className="login"> Udon </p>
       
-      <a href={AUTH_URL}>
-        <div className="loginMenu" onClick="FetchJson">
-          <h1>LOGIN</h1>
-        </div>
-      </a>
+      <Button href={AUTH_URL} size="large" variant="contained" color="primary">LOGIN</Button>
     </div>
     );
 }
@@ -54,7 +51,7 @@ class MainMenu extends React.Component{
         <ul>
           <li><div>打刻一覧</div></li>
         </ul>
-        <div className="punch"><h1>打刻</h1></div>
+        <Button variant="contained"color="primary">打刻</Button>
       </div>
       );
     }
