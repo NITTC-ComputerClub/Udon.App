@@ -1,11 +1,11 @@
 import React , {useState,useEffect} from 'react';
 import {Button , Dialog , DialogActions , DialogContent} from '@material-ui/core';
 
-const punch = () =>{
-	//doSomething
-}
-
 const showDialog = () => {
+	const punch = () =>{
+	//doSomething
+	}
+
 	const reconfmsg="打刻します。よろしいですか？"
 	const [open,setOpen]= React.useState(false);
 
@@ -17,7 +17,7 @@ const showDialog = () => {
 				{msg}
 			</DialogContent>
 			<DialogActions>
-				<Button onclick={} color="primary">
+				<Button onclick={punch} color="primary">
 					打刻
 				</Button>
 			</DialogActions>

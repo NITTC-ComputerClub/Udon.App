@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import{
@@ -8,15 +8,17 @@ import{
   Link,
   Redirect
 } from 'react-router-dom'
-import {Button} from '@material-ui/core'
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogActions
 
-//import Login from './pages/login/login.component'
-//import MainMenu from './pages/main-menu/main-menu.component'
-//<img className="icon" src={require("./Udon_icon.png")}/>
-
-const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirect_uri=localhost:3000/callback";
+} from '@material-ui/core'
 
 const Login =()=>{
+
+  const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirect_uri=localhost:3000/callback";
 
   return(
     <div>
@@ -26,6 +28,7 @@ const Login =()=>{
     </div>
     );
 }
+
 const Callback=()=>{
 
   return(
@@ -34,6 +37,34 @@ const Callback=()=>{
     </div>
     )
 }
+
+const showDialog = () => {
+  console.log("yobareteru");
+  const punch = () =>{
+  //doSomething
+  }
+  const open=false;
+  const msg="打刻します。よろしいですか？";
+
+  return(
+    <div>
+    <Dialog
+      open={open}
+      keepMounted
+    >
+      <DialogContent>
+        {msg}
+      </DialogContent>
+      <DialogActions>
+        <Button onclick={()=> punch()} color="primary">
+          打刻
+        </Button>
+      </DialogActions>
+    </Dialog>
+    </div>
+    );
+}
+
 
 class MainMenu extends React.Component{
   constructor(props) {
@@ -51,7 +82,7 @@ class MainMenu extends React.Component{
         <ul>
           <li><div>打刻一覧</div></li>
         </ul>
-        <Button variant="contained"color="primary">打刻</Button>
+        <Button onClick={() => showDialog()} variant="contained"color="primary">打刻</Button>
       </div>
       );
     }
