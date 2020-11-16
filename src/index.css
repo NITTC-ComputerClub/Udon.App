@@ -13,11 +13,13 @@ p.login{
 	font-size: 64px;
 	font-weight: 500;
 }
+/*-------Main Menu-------*/
+div.content{
+	display: flex;
+}
 /*-------Main Menu-nav-------*/
 div.nav{
-	background-color: #e9d0a6;
 	text-align: center;
-	margin-right: 0px;
 	width: 20vw;
 	height: 100vh;
 }
@@ -57,4 +59,7 @@ div.main{
 div.punchlist{
 	display: flex;
 	justify-content: center;
+}
+div.punchlist ul{
+	color: #DDD;
 }

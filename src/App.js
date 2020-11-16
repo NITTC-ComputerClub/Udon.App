@@ -37,54 +37,67 @@ const Callback=()=>{
     </div>
     )
 }
-
-const showDialog = () => {
-  console.log("yobareteru");
-  const punch = () =>{
-  //doSomething
+class ConfirmationDialog extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      msg : "打刻します。よろしいですか？",
+    };
   }
-  const open=false;
-  const msg="打刻します。よろしいですか？";
+  punch(){
 
-  return(
-    <div>
-    <Dialog
-      open={open}
-      keepMounted
-    >
-      <DialogContent>
-        {msg}
-      </DialogContent>
-      <DialogActions>
-        <Button onclick={()=> punch()} color="primary">
-          打刻
-        </Button>
-      </DialogActions>
-    </Dialog>
-    </div>
-    );
+  }
+  render(){
+    return(
+      <div>
+      <Dialog
+        open={this.props.dialog_is_open}
+        keepMounted
+      >
+        <DialogContent>
+          {this.props.msg}
+        </DialogContent>
+        <DialogActions>
+          <Button onclick={()=> this.punch()} color="primary">
+            打刻
+          </Button>
+        </DialogActions>
+      </Dialog>
+      </div>
+      )
+  }
 }
+class NavBar extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
 
-
-class MainMenu extends React.Component{
-  constructor(props) {
-        super(props);
-        this.state = {
-          user_name: "test"
-        };
     }
-    renderNav(){
-      return(
-        <div className="nav">
+  }
+  handleClick(){
+
+  }
+  render(){
+    return(
+      <div className="nav">
         <h1>Udon</h1>
         <p>{this.props.user_name}</p>
         <p>としてログイン中</p>
         <ul>
           <li><div>打刻一覧</div></li>
         </ul>
-        <Button onClick={() => showDialog()} variant="contained"color="primary">打刻</Button>
+        <Button onClick={() => this.handleClick()} variant="contained"color="primary">打刻</Button>
       </div>
-      );
+      )
+  }
+}
+class MainMenu extends React.Component{
+  constructor(props) {
+        super(props);
+        this.state = {
+          user_name: "test",
+          dialog_is_open :  false,
+        };
     }
     renderPunchList(){
       const punchAtTimes='hoge'
@@ -105,7 +118,7 @@ class MainMenu extends React.Component{
   render(){
     return(
       <div className="content">
-            {this.renderNav()}
+            <NavBar/>
             <div className="main">
               {this.renderPunchList()}
             </div>
