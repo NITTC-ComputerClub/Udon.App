@@ -1,5 +1,4 @@
-import React,{useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import{
   BrowserRouter as Router,
@@ -41,24 +40,25 @@ class ConfirmationDialog extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      msg : "打刻します。よろしいですか？",
+      
     };
   }
   punch(){
-
+    console.log("ok");
+    //doSomething
   }
   render(){
     return(
       <div>
       <Dialog
-        open={this.props.dialog_is_open}
+        open={this.props.open}
         keepMounted
       >
         <DialogContent>
           {this.props.msg}
         </DialogContent>
         <DialogActions>
-          <Button onclick={()=> this.punch()} color="primary">
+          <Button onClick={()=> this.punch()} color="primary">
             打刻
           </Button>
         </DialogActions>
@@ -72,11 +72,9 @@ class NavBar extends React.Component{
     super(props);
     this.state={
 
-    }
+    };
   }
-  handleClick(){
 
-  }
   render(){
     return(
       <div className="nav">
@@ -86,7 +84,7 @@ class NavBar extends React.Component{
         <ul>
           <li><div>打刻一覧</div></li>
         </ul>
-        <Button onClick={() => this.handleClick()} variant="contained"color="primary">打刻</Button>
+        <Button onClick={()=>this.props.btnClickFunc()} variant="contained"color="primary">打刻</Button>
       </div>
       )
   }
@@ -95,30 +93,38 @@ class MainMenu extends React.Component{
   constructor(props) {
         super(props);
         this.state = {
-          user_name: "test",
+          msg : "打刻します。よろしいですか？",
+          user: "test",
           dialog_is_open :  false,
         };
     }
-    renderPunchList(){
-      const punchAtTimes='hoge'
-      const punchClients= 'hoge'
-      return(
-        <div className="punchlist">
-          <ul className="punchlist">
-          <li>created at</li>
-          {punchAtTimes}
-          </ul>
-          <ul className="punchlist">
-          <li>client</li>
-          {punchClients}
-          </ul>
-        </div>
-      );
-    }
+  openDialog(){
+    this.setState((state)=>{return{dialog_is_open : true}});
+  }
+  renderPunchList(){
+    const punchAtTimes='hoge'
+    const punchClients= 'hoge'
+    return(
+      <div className="punchlist">
+        <ul className="punchlist">
+        <li>created at</li>
+        {punchAtTimes}
+        </ul>
+        <ul className="punchlist">
+        <li>client</li>
+        {punchClients}
+        </ul>
+      </div>
+    );
+  }
   render(){
     return(
       <div className="content">
-            <NavBar/>
+            <NavBar user_name={this.state.user} btnClickFunc={() => this.openDialog()}/>
+            <ConfirmationDialog
+              open={this.state.dialog_is_open}
+              msg={this.state.msg}
+              />
             <div className="main">
               {this.renderPunchList()}
             </div>
