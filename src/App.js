@@ -22,7 +22,6 @@ const Login =()=>{
   return(
     <div>
       <p className="login"> Udon </p>
-      
       <Button href={AUTH_URL} size="large" variant="contained" color="primary">LOGIN</Button>
     </div>
     );
@@ -32,7 +31,7 @@ const Callback=()=>{
 
   return(
     <div>
-    <p>メインページにリダイレクトします。しばらくお待ちください。</p>
+    <p>メインページにリダイレクトされます。少々お待ちください。</p>
     </div>
     )
 }
@@ -53,14 +52,14 @@ class ConfirmationDialog extends React.Component{
       <Dialog
         open={this.props.open}
         keepMounted
+        onBackdropClick={()=>this.props.handleClose()}
       >
         <DialogContent>
           {this.props.msg}
         </DialogContent>
         <DialogActions>
-          <Button onClick={()=> this.punch()} color="primary">
-            打刻
-          </Button>
+          <Button onClick={()=>this.props.handleClose()} color="primary">キャンセル</Button>
+          <Button onClick={()=> this.punch()} color="primary">打刻</Button>
         </DialogActions>
       </Dialog>
       </div>
@@ -92,6 +91,7 @@ class NavBar extends React.Component{
 class MainMenu extends React.Component{
   constructor(props) {
         super(props);
+        this.closeDialog=this.closeDialog.bind(this);
         this.state = {
           msg : "打刻します。よろしいですか？",
           user: "test",
@@ -100,6 +100,9 @@ class MainMenu extends React.Component{
     }
   openDialog(){
     this.setState((state)=>{return{dialog_is_open : true}});
+  }
+  closeDialog(){
+    this.setState((state)=>{return{dialog_is_open : false}});
   }
   renderPunchList(){
     const punchAtTimes='hoge'
@@ -124,6 +127,7 @@ class MainMenu extends React.Component{
             <ConfirmationDialog
               open={this.state.dialog_is_open}
               msg={this.state.msg}
+              handleClose={this.closeDialog}
               />
             <div className="main">
               {this.renderPunchList()}
