@@ -38,9 +38,6 @@ const Callback=()=>{
 class ConfirmationDialog extends React.Component{
   constructor(props){
     super(props);
-    this.state={
-      
-    };
   }
   punch(){
     console.log("ok");
@@ -69,11 +66,7 @@ class ConfirmationDialog extends React.Component{
 class NavBar extends React.Component{
   constructor(props){
     super(props);
-    this.state={
-
-    };
   }
-
   render(){
     return(
       <div className="nav">
