@@ -3,7 +3,7 @@
 body {
 	height: 100%;
 	margin: 0px;
-  	font: 16px "Montserrat", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  font: 16px "Montserrat", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 /*-------Login Menu-------*/
 p.login:first-letter{
