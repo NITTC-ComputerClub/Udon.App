@@ -1,65 +1,89 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
-body {
-	height: 100%;
-	margin: 0px;
-  	font: 16px "Montserrat", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+body
+{
+  font: 16px 'Montserrat', '游ゴシック', YuGothic, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+
+  height: 100%;
+  margin: 0;
 }
 /*-------Login Menu-------*/
-p.login:first-letter{
-	color: #EE2222
+p.login:first-letter
+{
+  color: #e22;
 }
-p.login{
-	font-size: 64px;
-	font-weight: 500;
+p.login
+{
+  font-size: 64px;
+  font-weight: 500;
 }
 /*-------Main Menu-------*/
-div.content{
-	display: flex;
+div.content
+{
+  display: flex;
 }
 /*-------Main Menu-nav-------*/
-div.nav{
-	text-align: center;
-	width: 20vw;
-	height: 100vh;
+div.nav
+{
+  width: 20vw;
+  height: 100vh;
+
+  text-align: center;
 }
-div.nav h1{
-	font-size: 3em;
-	margin-bottom: 0px;
+div.nav h1
+{
+  font-size: 3em;
+
+  margin-bottom: 0;
 }
-div.nav p{
-	margin: 0;
+div.nav p
+{
+  margin: 0;
 }
-div.nav ul{
-	margin: 0;
-	margin-top: 1em;
-	text-align: center;
-	padding: 0;
-	list-style: none;
-	height: 50vh;
+div.nav ul
+{
+  height: 50vh;
+  margin: 0;
+  margin-top: 1em;
+  padding: 0;
+
+  list-style: none;
+
+  text-align: center;
 }
-div.nav ul li{
-	display: inline-block;
-	cursor: pointer;
-	font-size: 1.5em;
-	padding-top: 1em;
-	padding-bottom: 0.2em;
+div.nav ul li
+{
+  font-size: 1.5em;
+
+  display: inline-block;
+
+  padding-top: 1em;
+  padding-bottom: .2em;
+
+  cursor: pointer;
 }
-div.punch p{
-	cursor: pointer;
-	margin: 0;
-	user-select: none;
+div.punch p
+{
+  margin: 0;
+
+  cursor: pointer;
+  user-select: none;
 }
 /*-------Main_Menu-main-------*/
-div.main{
-	background-color: #222222;
-	width: 80vw;
-	height: 100vh;
+div.main
+{
+  width: 80vw;
+  height: 100vh;
+
+  background-color: #222;
 }
-div.punchlist{
-	display: flex;
-	justify-content: center;
+div.punchlist
+{
+  display: flex;
+
+  justify-content: center;
 }
-div.punchlist ul{
-	color: #DDD;
+div.punchlist ul
+{
+  color: #ddd;
 }
