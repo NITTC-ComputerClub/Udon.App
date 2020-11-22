@@ -8,10 +8,10 @@ import {
   Redirect
 } from 'react-router-dom'
 import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogActions
+    Button,
+    Dialog,
+    DialogContent,
+    DialogActions
 
 } from '@material-ui/core'
 
