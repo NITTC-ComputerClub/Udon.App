@@ -1,88 +1,132 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import{
+import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   Redirect
 } from 'react-router-dom'
+import {
+    Button,
+    Dialog,
+    DialogContent,
+    DialogActions
 
-//import Login from './pages/login/login.component'
-//import MainMenu from './pages/main-menu/main-menu.component'
-//<img className="icon" src={require("./Udon_icon.png")}/>
+} from '@material-ui/core'
 
-const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirect_uri=localhost:3000/callback";
-
-const Login =()=>{
-
-  return(
-    <div className="login_contents">
-      <h1 className="loginMenu"> Udon </h1>
-      
-      <a href={AUTH_URL}>
-        <div className="loginMenu" onClick="FetchJson">
-          <h1>LOGIN</h1>
-        </div>
-      </a>
-    </div>
-    );
-}
-const Callback=()=>{
-
-  return(
+const Login = () => {
+  const AUTH_URL = "https://udon.nittc-programming.club/users/authenticate?redirect_uri=localhost:3000/callback";
+  return (
     <div>
-    <p>メインページにリダイレクトします。しばらくお待ちください。</p>
+      <p className="login"> Udon </p>
+      <Button href={AUTH_URL} size="large" variant="contained" color="primary">LOGIN</Button>
     </div>
-    )
+  );
 }
 
-class MainMenu extends React.Component{
+const Callback = () => {
+  return (
+    <div>
+      <p>メインページにリダイレクトされます。少々お待ちください。</p>
+    </div>
+  )
+}
+
+class ConfirmationDialog extends React.Component {
   constructor(props) {
-        super(props);
-        this.state = {
-          user_name: "test"
-        };
-    }
-    renderNav(){
-      return(
-        <div className="nav">
+    super(props);
+  }
+  punch() {
+    console.log("ok");
+    //doSomething
+  }
+  render() {
+    return (
+      <div>
+        <Dialog
+          open={this.props.open}
+          keepMounted
+          onBackdropClick={()=>this.props.handleClose()}
+        >
+          <DialogContent>
+            {this.props.msg}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={()=>this.props.handleClose()} color="primary">キャンセル</Button>
+            <Button onClick={()=> this.punch()} color="primary">打刻</Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    )
+  }
+}
+
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className="nav">
         <h1>Udon</h1>
         <p>{this.props.user_name}</p>
         <p>としてログイン中</p>
         <ul>
           <li><div>打刻一覧</div></li>
         </ul>
-        <div className="punch"><h1>打刻</h1></div>
+        <Button onClick={()=>this.props.btnClickFunc()} variant="contained"color="primary">打刻</Button>
       </div>
-      );
-    }
-    renderPunchList(){
-      const punchAtTimes='hoge'
-      const punchClients= 'hoge'
-      return(
-        <div className="punchlist">
-          <ul className="punchlist">
-          <li>created at</li>
-          {punchAtTimes}
-          </ul>
-          <ul className="punchlist">
-          <li>client</li>
-          {punchClients}
-          </ul>
-        </div>
-      );
-    }
+    );
+  }
+}
+
+class MainMenu extends React.Component{
+  constructor(props) {
+    super(props);
+    this.closeDialog=this.closeDialog.bind(this);
+    this.state = {
+      msg : "打刻します。よろしいですか？",
+      user: "test",
+      dialog_is_open :  false,
+    };
+  }
+  openDialog(){
+    this.setState((state)=>{return{dialog_is_open : true}});
+  }
+  closeDialog(){
+    this.setState((state)=>{return{dialog_is_open : false}});
+  }
+  renderPunchList(){
+    const punchAtTimes='hoge'
+    const punchClients= 'hoge'
+    return(
+      <div className="punchlist">
+        <ul className="punchlist">
+        <li>created at</li>
+        {punchAtTimes}
+        </ul>
+        <ul className="punchlist">
+        <li>client</li>
+        {punchClients}
+        </ul>
+      </div>
+    );
+  }
   render(){
     return(
       <div className="content">
-            {this.renderNav()}
-            <div className="main">
-              {this.renderPunchList()}
-            </div>
+        <NavBar user_name={this.state.user} btnClickFunc={() => this.openDialog()}/>
+        <ConfirmationDialog
+          open={this.state.dialog_is_open}
+          msg={this.state.msg}
+          handleClose={this.closeDialog}
+          />
+        <div className="main">
+          {this.renderPunchList()}
         </div>
-      );
+      </div>
+    );
   }
 }
 
@@ -92,8 +136,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login" exact component={Login}/>
-          <Route path="/main" exact component={MainMenu}/>
-          //ここはあとで消す
+          <Route path="" exact component={MainMenu}/>
           <Route path="/Callback" exact component={Callback}/>
         </Switch>
       </Router>
